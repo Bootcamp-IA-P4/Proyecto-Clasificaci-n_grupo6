@@ -17,6 +17,7 @@ venv/
 env/
 ENV/
 .env
+.venv
 
 # Archivos de configuración con credenciales
 config.ini
