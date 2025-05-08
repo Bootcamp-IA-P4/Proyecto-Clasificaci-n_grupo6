@@ -6,12 +6,6 @@ data/
 *.db
 *.sqlite
 
-# Modelos guardados
-*.pkl
-*.h5
-*.joblib
-*.model
-
 # Entornos virtuales
 venv/
 env/
