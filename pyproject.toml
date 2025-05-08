@@ -3,8 +3,11 @@ name = "proyecto-clasificaci-n-grupo6"
 version = "0.1.0"
 requires-python = ">=3.13"
 dependencies = [
+    "imblearn>=0.0",
+    "lightgbm>=4.6.0",
     "matplot>=0.1.9",
     "numpy>=2.2.5",
+    "optuna>=4.3.0",
     "pandas>=2.2.3",
     "scikit-learn>=1.6.1",
     "seaborn>=0.13.2",
