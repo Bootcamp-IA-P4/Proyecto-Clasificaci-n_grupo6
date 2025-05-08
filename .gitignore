@@ -6,6 +6,7 @@ data/
 *.db
 *.sqlite
 
+
 # Entornos virtuales
 venv/
 env/
