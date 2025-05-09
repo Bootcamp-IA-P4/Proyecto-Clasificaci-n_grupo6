@@ -1,0 +1,33 @@
+# Git files
+.git
+.gitignore
+
+# Python cache and virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+
+# Jupyter Notebook files
+.ipynb_checkpoints
+*.ipynb
+
+# IDE settings
+.vscode/
+.idea/
+
+# Data files
+data/*
+!data/.gitkeep
+
+# Log files
+*.log
+
+# Temporary files
+*.swp
+*.swo
+*~ 

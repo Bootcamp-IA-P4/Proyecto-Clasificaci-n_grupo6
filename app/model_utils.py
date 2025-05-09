@@ -13,6 +13,11 @@ def load_model_and_preprocessor():
     Utiliza cache_resource para evitar recargas innecesarias.
     """
     try:
+        # Debug information
+        st.sidebar.write(f"Current working directory: {os.getcwd()}")
+        st.sidebar.write(f"Looking for model at: {MODEL_PATH}")
+        st.sidebar.write(f"File exists: {os.path.exists(MODEL_PATH)}")
+        
         # Cargar el modelo
         if os.path.exists(MODEL_PATH):
             model = joblib.load(MODEL_PATH)
