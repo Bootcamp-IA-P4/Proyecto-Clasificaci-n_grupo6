@@ -45,7 +45,7 @@ def create_tables(connection):
                     prediction_rate float,
                     page_values integer,
                     exit_rates float,
-                    bouce_rates float,
+                    bounce_rates float,
                     weekend boolean,
                     administrative integer,
                     informational integer,
@@ -72,14 +72,14 @@ def save_prediction(prediction, connection):
         cursor.execute("""
             INSERT INTO stock_value (
                 timestamp, prediction, prediction_rate, page_values, exit_rates,
-                bouce_rates, weekend, administrative, informational,
+                bounce_rates, weekend, administrative, informational,
                 product_related, administrative_duration, informational_duration,
                 product_related_duration, month, new_visitor
             )
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             prediction.timestamp, prediction.prediction, prediction.prediction_rate,
-            prediction.page_values, prediction.exit_rates, prediction.bouce_rates,
+            prediction.page_values, prediction.exit_rates, prediction.bounce_rates,
             prediction.weekend, prediction.administrative, prediction.informational,
             prediction.product_related, prediction.administrative_duration,
             prediction.informational_duration, prediction.product_related_duration,
