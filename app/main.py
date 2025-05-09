@@ -1,1 +1,0 @@
-# Contenido de la aplicación para desarrollar después de modelado
