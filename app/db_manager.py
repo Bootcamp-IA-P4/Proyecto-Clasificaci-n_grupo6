@@ -7,7 +7,9 @@ import logging
 import os
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename='myapp.log', level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s",)
-DB_NAME = os.getenv("DB_NAME")
+DB_PATH = os.getenv("DB_PATH")
+os.makedirs(DB_PATH, exist_ok=True)
+DB_NAME = os.path.join(DB_PATH, os.getenv("DB_FILENAME"))
 
 def db_connect():
     # Connect to database
@@ -54,7 +56,7 @@ def create_tables(connection):
                     informational_duration integer,
                     product_related_duration integer,
                     month integer,
-                    new_visitor boolean,
+                    new_visitor boolean
                     
                 )
             """)
