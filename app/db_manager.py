@@ -38,7 +38,7 @@ def create_tables(connection):
         try:
             # Create table company if not exists
             cursor.execute("""
-                CREATE TABLE IF NOT EXISTS company (
+                CREATE TABLE IF NOT EXISTS prediction (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     timestamp datetime,
                     prediction boolean,
