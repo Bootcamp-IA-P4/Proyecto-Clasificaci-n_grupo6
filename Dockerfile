@@ -27,7 +27,7 @@ RUN pip install --no-cache-dir streamlit==1.32.0 && \
 COPY . .
 
 # Create directory for SQLite database
-RUN mkdir -p /app/data
+RUN mkdir -p /app/data/database
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1

@@ -53,10 +53,10 @@ def summary_section(df, model_type):
     
     # Obtener estadísticas para últimos 7 días
     recent_df = df
-    if 'Timestamp' in df.columns:
-        df['Timestamp'] = pd.to_datetime(df['Timestamp'])
+    if 'timestamp' in df.columns:
+        df['timestamp'] = pd.to_datetime(df['timestamp'])
         seven_days_ago = datetime.now() - timedelta(days=7)
-        recent_df = df[df['Timestamp'] >= seven_days_ago]
+        recent_df = df[df['timestamp'] >= seven_days_ago]
     
     recent_stats = get_prediction_stats(recent_df)
     
@@ -119,13 +119,13 @@ def conversion_trends_section(df):
     """
     st.subheader("Tendencias de conversión")
     
-    if df.empty or 'Prediction' not in df.columns:
+    if df.empty or 'prediction' not in df.columns:
         st.info("No hay datos suficientes para mostrar tendencias.")
         return
     
     # Gráfico de distribución de predicciones
     fig, ax = plt.subplots(figsize=(10, 6))
-    prediction_counts = df['Prediction'].value_counts()
+    prediction_counts = df['prediction'].value_counts()
     
     # Modificación: usamos un gráfico de barras manual con colores de Google Analytics
     bars = ax.bar(
@@ -153,8 +153,8 @@ def conversion_trends_section(df):
     st.pyplot(fig)
     
     # Análisis de probabilidades
-    if 'Probability' in df.columns:
-        prob_values = df['Probability'].str.rstrip('%').astype(float) / 100
+    if 'probability' in df.columns:
+        prob_values = df['probability'].str.rstrip('%').astype(float) / 100
         
         # Histograma de probabilidades
         fig, ax = plt.subplots(figsize=(10, 6))
@@ -192,12 +192,12 @@ def visitor_analysis_section(df):
     """
     st.subheader("Análisis por tipo de visitante")
     
-    if df.empty or 'VisitorType' not in df.columns:
+    if df.empty or 'visitor_type' not in df.columns:
         st.info("No hay datos de tipos de visitante para analizar.")
         return
     
     # Gráfico de conversiones por tipo de visitante
-    visitor_conversion = df.groupby('VisitorType')['Prediction'].apply(
+    visitor_conversion = df.groupby('visitor_type')['prediction'].apply(
         lambda x: (x == 'Compra').mean() * 100
     ).reset_index()
     visitor_conversion.columns = ['Tipo de visitante', 'Tasa de conversión (%)']
@@ -214,13 +214,13 @@ def visitor_analysis_section(df):
     st.pyplot(fig)
     
     # Tabla de métricas por tipo de visitante
-    visitor_metrics = df.groupby('VisitorType').agg({
-        'Prediction': lambda x: (x == 'Compra').sum(),
-        'Probability': lambda x: pd.to_numeric(x.str.rstrip('%')) / 100
+    visitor_metrics = df.groupby('visitor_type').agg({
+        'prediction': lambda x: (x == 'Compra').sum(),
+        'probability': lambda x: pd.to_numeric(x.str.rstrip('%')) / 100
     }).reset_index()
     
     visitor_metrics.columns = ['Tipo de visitante', 'Compras', 'Probabilidad media']
-    visitor_metrics['Total visitantes'] = df.groupby('VisitorType').size().values
+    visitor_metrics['Total visitantes'] = df.groupby('visitor_type').size().values
     visitor_metrics['Tasa de conversión'] = (visitor_metrics['Compras'] / visitor_metrics['Total visitantes'] * 100).round(1).astype(str) + '%'
     visitor_metrics['Probabilidad media'] = (visitor_metrics['Probabilidad media']).round(3).astype(str) + '%'
     
@@ -237,7 +237,7 @@ def feature_importance_section(df):
     
     # Obtener características numéricas
     numeric_cols = df.select_dtypes(include=['float64', 'int64']).columns
-    exclude_cols = ['Probability']
+    exclude_cols = ['probability']
     feature_cols = [col for col in numeric_cols if col not in exclude_cols and col in df.columns]
     
     if not feature_cols or len(feature_cols) < 2:
@@ -250,15 +250,15 @@ def feature_importance_section(df):
         # Correlación con la predicción
         st.subheader("Correlación con la conversión")
         
-        if 'Prediction' in df.columns:
+        if 'prediction' in df.columns:
             # Convertir predicción a numérico (1 para Compra, 0 para No Compra)
-            df['Prediction_Numeric'] = df['Prediction'].apply(lambda x: 1 if x == 'Compra' else 0)
+            df['prediction_numeric'] = df['prediction'].apply(lambda x: 1 if x == 'Compra' else 0)
             
             # Calcular correlaciones
             correlations = []
             for feature in feature_cols:
                 if feature in df.columns:
-                    corr = df[feature].corr(df['Prediction_Numeric'])
+                    corr = df[feature].corr(df['prediction_numeric'])
                     if not np.isnan(corr):
                         correlations.append({
                             'Característica': feature,
@@ -284,14 +284,14 @@ def feature_importance_section(df):
     
     with col2:
         # PageValues es una característica clave
-        if 'PageValues' in df.columns and 'Prediction' in df.columns:
+        if 'page_values' in df.columns and 'prediction' in df.columns:
             st.subheader("Impacto de PageValues en la conversión")
             
             # Boxplot de PageValues por predicción
             fig, ax = plt.subplots(figsize=(10, 6))
             sns.boxplot(
-                x='Prediction',
-                y='PageValues',
+                x='prediction',
+                y='page_values',
                 data=df,
                 ax=ax,
                 palette=[COLORS['purple'], COLORS['teal']]  # Púrpura para No Compra, Turquesa para Compra
@@ -330,7 +330,7 @@ def temporal_analysis_section(df):
     """
     st.header("Análisis temporal")
     
-    if 'Timestamp' not in df.columns or len(df) <= 1:
+    if 'timestamp' not in df.columns or len(df) <= 1:
         st.info("Se necesitan más datos para mostrar el análisis temporal.")
         return
     
@@ -353,10 +353,10 @@ def temporal_analysis_section(df):
     st.pyplot(fig)
     
     # Análisis por mes
-    if 'Month' in df.columns:
+    if 'month' in df.columns:
         st.subheader("Análisis estacional por mes")
         
-        month_conversion = df.groupby('Month')['Prediction'].apply(
+        month_conversion = df.groupby('month')['prediction'].apply(
             lambda x: (x == 'Compra').mean() * 100
         ).reset_index()
         month_conversion.columns = ['Mes', 'Tasa de conversión (%)']

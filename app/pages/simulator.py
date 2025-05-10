@@ -272,4 +272,4 @@ def get_probability_color(probability):
     elif probability >= 0.4:
         return COLORS['orange']      
     else:
-        return COLORS['chart_blue']  
+        return COLORS['chart_blue']

@@ -13,11 +13,6 @@ def load_model_and_preprocessor():
     Utiliza cache_resource para evitar recargas innecesarias.
     """
     try:
-        # Debug information
-        st.sidebar.write(f"Current working directory: {os.getcwd()}")
-        st.sidebar.write(f"Looking for model at: {MODEL_PATH}")
-        st.sidebar.write(f"File exists: {os.path.exists(MODEL_PATH)}")
-        
         # Cargar el modelo
         if os.path.exists(MODEL_PATH):
             model = joblib.load(MODEL_PATH)
@@ -28,7 +23,6 @@ def load_model_and_preprocessor():
             else:
                 expected_features = []
         else:
-            st.sidebar.error(f"No se encontró el modelo en: {MODEL_PATH}")
             return None, None, [], None
         
         # Cargar el preprocesador
@@ -36,8 +30,6 @@ def load_model_and_preprocessor():
         if os.path.exists(PREPROCESSOR_PATH):
             with open(PREPROCESSOR_PATH, 'rb') as f:
                 preprocessor = pickle.load(f)
-        else:
-            st.sidebar.warning("No se encontró el preprocesador.")
         
         # Obtener la importancia de características
         feature_importance = None
@@ -50,7 +42,6 @@ def load_model_and_preprocessor():
         return model, preprocessor, expected_features, feature_importance
     
     except Exception as e:
-        st.sidebar.error(f"Error al cargar el modelo o preprocesador: {str(e)}")
         return None, None, [], None
 
 def preprocess_data(input_data, preprocessor, expected_features):

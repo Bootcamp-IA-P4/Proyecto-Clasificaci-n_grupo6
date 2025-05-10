@@ -123,10 +123,10 @@ def create_and_apply_filters(df):
     filtered_df = df.copy()
     
     # Preparar datos de timestamp si están presentes
-    if 'Timestamp' in filtered_df.columns:
-        filtered_df['Timestamp'] = pd.to_datetime(filtered_df['Timestamp'])
-        min_date = filtered_df['Timestamp'].min().date()
-        max_date = filtered_df['Timestamp'].max().date()
+    if 'timestamp' in filtered_df.columns:
+        filtered_df['timestamp'] = pd.to_datetime(filtered_df['timestamp'])
+        min_date = filtered_df['timestamp'].min().date()
+        max_date = filtered_df['timestamp'].max().date()
         
         st.markdown("<div style='font-weight: 500; margin-top: 10px; margin-bottom: 5px;'>Rango de fechas</div>", unsafe_allow_html=True)
         col1, col2 = st.columns(2)
@@ -147,45 +147,45 @@ def create_and_apply_filters(df):
         
         # Aplicar filtro de fechas
         filtered_df = filtered_df[
-            (filtered_df['Timestamp'].dt.date >= start_date) &
-            (filtered_df['Timestamp'].dt.date <= end_date)
+            (filtered_df['timestamp'].dt.date >= start_date) &
+            (filtered_df['timestamp'].dt.date <= end_date)
         ]
     
     # Filtros adicionales
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        if 'Prediction' in filtered_df.columns:
-            available_predictions = sorted(filtered_df['Prediction'].unique())
+        if 'prediction' in filtered_df.columns:
+            available_predictions = sorted(filtered_df['prediction'].unique())
             prediction_filter = st.multiselect(
                 "Filtrar por resultado",
                 options=available_predictions,
                 default=available_predictions
             )
             if prediction_filter and len(prediction_filter) < len(available_predictions):
-                filtered_df = filtered_df[filtered_df['Prediction'].isin(prediction_filter)]
+                filtered_df = filtered_df[filtered_df['prediction'].isin(prediction_filter)]
     
     with col2:
-        if 'Month' in filtered_df.columns:
-            available_months = sorted(filtered_df['Month'].unique())
+        if 'month' in filtered_df.columns:
+            available_months = sorted(filtered_df['month'].unique())
             month_filter = st.multiselect(
                 "Filtrar por mes",
                 options=available_months,
                 default=available_months
             )
             if month_filter and len(month_filter) < len(available_months):
-                filtered_df = filtered_df[filtered_df['Month'].isin(month_filter)]
+                filtered_df = filtered_df[filtered_df['month'].isin(month_filter)]
     
     with col3:
-        if 'VisitorType' in filtered_df.columns:
-            available_types = sorted(filtered_df['VisitorType'].unique())
+        if 'visitor_type' in filtered_df.columns:
+            available_types = sorted(filtered_df['visitor_type'].unique())
             visitor_filter = st.multiselect(
                 "Filtrar por tipo de visitante",
                 options=available_types,
                 default=available_types
             )
             if visitor_filter and len(visitor_filter) < len(available_types):
-                filtered_df = filtered_df[filtered_df['VisitorType'].isin(visitor_filter)]
+                filtered_df = filtered_df[filtered_df['visitor_type'].isin(visitor_filter)]
     
     st.markdown('</div>', unsafe_allow_html=True)
     
