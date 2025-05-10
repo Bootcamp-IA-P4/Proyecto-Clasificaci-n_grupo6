@@ -21,7 +21,8 @@ RUN pip install --no-cache-dir streamlit==1.32.0 && \
     pip install --no-cache-dir seaborn==0.13.2 && \
     pip install --no-cache-dir scikit-learn==1.6.1 && \
     pip install --no-cache-dir xgboost==3.0.0 && \
-    pip install --no-cache-dir SQLAlchemy==2.0.40
+    pip install --no-cache-dir SQLAlchemy==2.0.40 && \
+    pip install --no-cache-dir python-dotenv==1.0.0
 
 # Copy application code
 COPY . .
@@ -31,6 +32,9 @@ RUN mkdir -p /app/data/database
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
+ENV DATA_PATH=data/database
+ENV DB_FILENAME=onlineshopping.db
+ENV DB_URI=sqlite:///data/database/onlineshopping.db
 
 # Expose port for Streamlit
 EXPOSE 8501
