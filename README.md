@@ -138,7 +138,7 @@ Accede a la aplicación navegando a `http://localhost:8501` en tu navegador.
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone <url-repo>
+   git clone https://github.com/MarynaDRST/Proyecto-Clasificaci-n_grupo6.git
    cd proyecto-clasificacion
    ```
 
