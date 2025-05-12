@@ -1,6 +1,8 @@
 # 🛒 DataShop Analytics: Predictor de Intención de Compra 📊
 
 <div align="center">
+    <img src="app/assets/images/datashop_analytics.png" alt="DataShop Analytics Logo" width="300">
+    <br><br>
     <img src="https://img.shields.io/badge/E--Commerce-Analytics-orange?style=for-the-badge&logo=shopify&logoColor=white" alt="E-Commerce Analytics">
     <img src="https://img.shields.io/badge/ML-Prediction-4ECDC4?style=for-the-badge&logo=python&logoColor=white" alt="ML Prediction">
 </div>
@@ -30,7 +32,7 @@ Todo comenzó cuando un equipo de analistas de datos se propuso aprovechar el da
    - Random Forest: El enfoque de conjunto
    - SVM: El clasificador vectorial
 
-3. **XGBoost: El Modelo Campeón** 👑: Tras rigurosas pruebas, nuestro modelo XGBoost optimizado destacó con:
+3. **XGBoost: El Modelo Campeón** 👑: Tras rigurosas pruebas y un [análisis comparativo detallado](notebooks/modelo_analisis_comparativo_clasificacion.md), nuestro modelo XGBoost optimizado destacó con:
    - **Precisión en prueba (Accuracy)**: 0.8948
    - **F1-score** (clase positiva): 0.69
    - **Precision** (clase positiva): 0.64
@@ -49,7 +51,7 @@ Todo comenzó cuando un equipo de analistas de datos se propuso aprovechar el da
 * **Interfaz Intuitiva** 🖱️: Experiencia de usuario clara y accesible
 * **Pipeline Dockerizado** 🐳: Implementación rápida y sin complicaciones
 
-## ⚙️ Tecnologías Utilizadas⚙️
+## ⚙️ Pila Tecnológica ⚙️
 
 ![Python](https://img.shields.io/badge/Python-3.11+-blue?style=flat-square&logo=python)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.32.0-FF4B4B?style=flat-square&logo=streamlit)
@@ -65,39 +67,61 @@ Todo comenzó cuando un equipo de analistas de datos se propuso aprovechar el da
 ## 📁 Estructura del Proyecto 📁
 
 ```
-proyect-clasificacion/
+proyecto-clasificacion-grupo6/
 ├── app/                          # Núcleo de la aplicación
 │   ├── app.py                    # Punto de entrada principal
+│   ├── assets/                   # Recursos estáticos (imágenes, etc.)
 │   ├── config.py                 # Configuraciones de la aplicación
 │   ├── data_utils.py             # Utilidades para manejo de datos
 │   ├── db_manager.py             # Gestor de base de datos SQLite
 │   ├── db_models.py              # Modelos ORM para SQLAlchemy
 │   ├── model_utils.py            # Utilidades para cargar y usar modelos ML
+│   ├── pages/                    # Páginas de la aplicación
+│   │   ├── dashboard.py          # Página de dashboard principal
+│   │   ├── history.py            # Página de historial de predicciones
+│   │   └── simulator.py          # Simulador de comportamiento
 │   ├── ui_components.py          # Componentes de interfaz reutilizables
-│   ├── utils.py                  # Utilidades generales
-│   ├── assets/                   # Recursos estáticos
-│   └── pages/                    # Páginas de la aplicación
-│       ├── dashboard.py          # Página de dashboard principal
-│       ├── history.py            # Página de historial de predicciones
-│       └── simulator.py          # Simulador de comportamiento
+│   └── utils.py                  # Utilidades generales
 ├── data/                         # Datos del proyecto (a crear)
-│   ├── raw/                      # Dataset original
-│   ├── clean/                   # Dataset procesado (al ejecutar el EDA)
-│   └── database/                 # Base de datos SQLite (generada)
+│   ├── clean/                    # Dataset procesado y limpio
+│   │   └── online_shoppers_clean.csv
+│   ├── database/                 # Base de datos SQLite (generada)
+│   │   └── onlineshopping.db
+│   └── raw/                      # Dataset original
+│       └── online_shoppers_intention.csv
 ├── notebooks/                    # Notebooks de análisis y modelado
-│   ├── modeling/                 # Notebooks de modelado
-│   │   ├── lightgbm/             # Modelos LightGBM
-│   │   ├── random_forest/        # Modelos Random Forest
-│   │   ├── SVM/                  # Modelos SVM
-│   │   └── xgboost/              # Modelos XGBoost (seleccionado)
-│   │       ├── pkl_exports/      # Modelos exportados
-│   └── eda_shoppers_explained    # Análisis exploratorio de datos
-├── tests/                        # Pruebas automatizadas
-├── .env.example                  # Ejemplo de variables de entorno
+│   ├── eda_shoppers_explained_and.ipynb # Análisis exploratorio de datos
+│   └── modeling/                 # Carpetas de modelos
+│       ├── lightgbm/             # Modelo LightGBM
+│       │   ├── lightgbm_model.ipynb
+│       │   ├── lightgbm_model.pkl
+│       │   ├── lightgbm_preprocessor.pkl
+│       │   └── model_lightgbm.ipynb
+│       ├── random_forest/        # Modelo Random Forest
+│       │   ├── export_models/    # Modelos exportados
+│       │   │   ├── random_forest_model_base.pkl
+│       │   │   ├── random_forest_optimized.pkl
+│       │   │   └── random_forest_preprocessor.pkl
+│       │   └── random_forest.ipynb
+│       ├── SVM/                  # Modelo SVM
+│       │   ├── export_models/    # Modelos exportados
+│       │   │   └── svm_final_model.joblib
+│       │   └── SVM.ipynb
+│       └── xgboost/              # Modelo XGBoost (seleccionado)
+│           ├── pkl_exports/      # Modelos exportados
+│           │   ├── xgboost_model_base.pkl
+│           │   ├── xgboost_optimized.pkl
+│           │   └── xgboost_preprocessor.pkl
+│           └── xgboost.ipynb
+├── tests/                        # Pruebas automatizadas (pendiente)
+│   └── .gitkeep
 ├── .dockerignore                 # Archivos ignorados por Docker
+├── .env                          # Variables de entorno
+├── .env.example                  # Ejemplo de variables de entorno
 ├── .gitignore                    # Archivos ignorados por Git
 ├── Dockerfile                    # Configuración para contenerización
 ├── pyproject.toml                # Dependencias del proyecto
+├── requirements.docker.txt       # Requisitos para Docker
 ├── requirements.txt              # Requisitos detallados
 └── README.md                     # Este archivo
 ```
@@ -138,7 +162,7 @@ Accede a la aplicación navegando a `http://localhost:8501` en tu navegador.
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone https://github.com/MarynaDRST/Proyecto-Clasificaci-n_grupo6.git
+   git clone <url-repo>
    cd proyecto-clasificacion
    ```
 
@@ -169,6 +193,14 @@ Accede a la aplicación navegando a `http://localhost:8501` en tu navegador.
    streamlit run app/app.py
    ```
 
+## 🌐 Despliegue en AWS 🌐
+
+DataShop Analytics está desplegado y disponible para uso en AWS:
+
+- **URL de acceso**: [13.48.190.206](http://13.48.190.206/)
+
+La aplicación está alojada en una instancia EC2 de AWS, lo que permite un acceso sencillo desde cualquier navegador sin necesidad de instalación local.
+
 ## 📊 Uso de la Aplicación 📊
 
 1. **Dashboard**: Visualiza métricas clave sobre tasas de conversión y comportamiento de usuarios.
@@ -181,7 +213,7 @@ Cada sección proporciona insights accionables para optimizar tus estrategias de
 
 ## 👥 Equipo de Desarrollo 👥
 
-* [**Maryna (Scrum Master)**](https://github.com/MarynaDRST) - Coordinación del proyecto y gestión ágil
+* [**Maryna Nalyvaiko (Scrum Master)**](https://github.com/MarynaDRST) - Coordinación del proyecto y gestión ágil
 * [**Fernando García Catalán**](https://github.com/fergarcat) - Equipo de desarrollo
 * [**Stephany Angeles**](https://github.com/stephyangeles) - Equipo de desarrollo
 * [**Pepe Ruiz**](https://github.com/peperuizdev) - Equipo de desarrollo
