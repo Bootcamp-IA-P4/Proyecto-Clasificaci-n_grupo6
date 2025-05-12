@@ -113,8 +113,12 @@ proyecto-clasificacion-grupo6/
 │           │   ├── xgboost_optimized.pkl
 │           │   └── xgboost_preprocessor.pkl
 │           └── xgboost.ipynb
-├── tests/                        # Pruebas automatizadas (pendiente)
+├── tests/                        # Pruebas automatizadas 
 │   └── .gitkeep
+│   └──__init.py__
+│   └── conftest.py
+│   └── test_db_manager.py        # Test de integración
+│   └── test_model_utils.py       # Test unitarios
 ├── .dockerignore                 # Archivos ignorados por Docker
 ├── .env                          # Variables de entorno
 ├── .env.example                  # Ejemplo de variables de entorno
@@ -192,7 +196,10 @@ Accede a la aplicación navegando a `http://localhost:8501` en tu navegador.
    ```bash
    streamlit run app/app.py
    ```
-
+### Ejecutar Tests 
+ ```bash
+   pytest app/tests
+   ```
 ## 🌐 Despliegue en AWS 🌐
 
 DataShop Analytics está desplegado y disponible para uso en AWS:
