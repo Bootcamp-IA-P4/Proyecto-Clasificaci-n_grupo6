@@ -80,6 +80,13 @@ proyecto-clasificacion-grupo6/
 │   │   ├── dashboard.py          # Página de dashboard principal
 │   │   ├── history.py            # Página de historial de predicciones
 │   │   └── simulator.py          # Simulador de comportamiento
+│   ├── tests/                    # Pruebas automatizadas
+│   │    ├── .gitkeep
+│   │    ├──__init.py__
+│   │    ├── conftest.py
+│   │    ├── test_db_manager.py   # Test de integración
+│   │    └───test_model_utils.py  # Test unitarios
+│   │
 │   ├── ui_components.py          # Componentes de interfaz reutilizables
 │   └── utils.py                  # Utilidades generales
 ├── data/                         # Datos del proyecto (a crear)
@@ -113,12 +120,7 @@ proyecto-clasificacion-grupo6/
 │           │   ├── xgboost_optimized.pkl
 │           │   └── xgboost_preprocessor.pkl
 │           └── xgboost.ipynb
-├── tests/                        # Pruebas automatizadas 
-│   └── .gitkeep
-│   └──__init.py__
-│   └── conftest.py
-│   └── test_db_manager.py        # Test de integración
-│   └── test_model_utils.py       # Test unitarios
+│
 ├── .dockerignore                 # Archivos ignorados por Docker
 ├── .env                          # Variables de entorno
 ├── .env.example                  # Ejemplo de variables de entorno
