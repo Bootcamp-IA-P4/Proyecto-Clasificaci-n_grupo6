@@ -1,9 +1,10 @@
 import pytest
 from config import MODEL_PATH, PREPROCESSOR_PATH
-from app.model_utils import load_model_and_preprocessor, preprocess_data, make_prediction
-from app.db_manager import save_prediction, load_predictions, get_prediction_stats
-from app.db_models import Prediction
+from model_utils import load_model_and_preprocessor, preprocess_data, make_prediction
+from db_manager import save_prediction, load_predictions, get_prediction_stats
+from db_models import Prediction
 
+#TEST DE INTEGRACION
 def test_save_and_load_prediction(db_session, sample_data):
     """Test de integración para guardar y cargar predicciones"""
     # Cargar modelo y preprocesador

@@ -7,9 +7,8 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.insert(0, PROJECT_ROOT)
 
 # Importaciones necesarias para los tests
-from app.model_utils import load_model_and_preprocessor, preprocess_data, make_prediction
-from app.db_manager import get_db, save_prediction, create_tables
-from app.pages import config
+from model_utils import load_model_and_preprocessor, preprocess_data, make_prediction
+from db_manager import get_db, save_prediction, create_tables
 from config import MODEL_PATH, PREPROCESSOR_PATH  
 import pandas as pd
 import pickle

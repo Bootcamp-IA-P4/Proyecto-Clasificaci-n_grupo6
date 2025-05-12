@@ -1,8 +1,9 @@
 import pytest
 import numpy as np
 from config import MODEL_PATH, PREPROCESSOR_PATH
-from app.model_utils import load_model_and_preprocessor, preprocess_data, make_prediction
+from model_utils import load_model_and_preprocessor, preprocess_data, make_prediction
 
+#TESTS UNITARIOS
 def test_load_model_and_preprocessor():
     """Test para verificar la carga del modelo y preprocesador"""
     model, preprocessor, expected_features, feature_importance = load_model_and_preprocessor()
