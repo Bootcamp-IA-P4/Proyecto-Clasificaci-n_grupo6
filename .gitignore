@@ -1,0 +1,52 @@
+# Datos
+data/
+*.csv
+*.xlsx
+*.xls
+*.db
+*.sqlite
+
+
+# Entornos virtuales
+venv/
+env/
+ENV/
+.env
+.venv
+
+# Archivos de configuración con credenciales
+config.ini
+.env
+credentials.json
+
+# Archivos de caché
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Logs
+logs/
+*.log
+
+# Distribución / empaquetado
+dist/
+build/
+*.egg-info/
+
+# OS específicos
+.DS_Store
+Thumbs.db
+
+# Archivos temporales
+*.bak
+*.swp
+*.tmp
+
+# IDE específicos
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+musor/
