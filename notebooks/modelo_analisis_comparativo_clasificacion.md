@@ -231,17 +231,17 @@ Las matrices de confusión nos permiten visualizar mejor el rendimiento de cada 
 
 Las curvas ROC representan gráficamente la sensibilidad (tasa de verdaderos positivos) frente a 1-especificidad (tasa de falsos positivos) para diferentes umbrales de clasificación.
 
-La curva ROC para GBoost:
-![Curvas ROC](images/ROC_XGboost.png "La curva ROC para GBoost")
+La curva ROC para GBoost:  
+<img src="images/ROC_XGboost.png" alt="La curva ROC para GBoost" width="500"/>
 
-La curva ROC para LightGBM:
-![Curvas ROC](images/ROC_lightgmb.png "La curva ROC para LightGBM")
+La curva ROC para LightGBM:  
+<img src="images/ROC_lightgmb.png" alt="La curva ROC para LightGBM" width="500"/>
 
-La curva ROC para SVM:
-![Curvas ROC](images/ROC_svm.png "La curva ROC para SVM")
+La curva ROC para SVM:  
+<img src="images/ROC_svm.png" alt="La curva ROC para SVM" width="500"/>
 
-La curva ROC para Random Forest:
-![Curvas ROC](images/ROC_random_forest.png "La curva ROC para Random Forest")
+La curva ROC para Random Forest:  
+<img src="images/ROC_random_forest.png" alt="La curva ROC para Random Forest" width="500"/>
 
 **Análisis de las curvas ROC:**
 - **XGBoost:** Área bajo la curva de 0.93, mostrando excelente capacidad discriminativa.
