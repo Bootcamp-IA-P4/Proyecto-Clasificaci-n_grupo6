@@ -229,11 +229,14 @@ Las matrices de confusión nos permiten visualizar mejor el rendimiento de cada 
 
 ### Curvas ROC
 
-Las curvas ROC representan gráficamente la sensibilidad (tasa de verdaderos positivos) frente a 1-especificidad (tasa de falsos positivos) para diferentes umbrales de clasificación:
-
+Las curvas ROC representan gráficamente la sensibilidad (tasa de verdaderos positivos) frente a 1-especificidad (tasa de falsos positivos) para diferentes umbrales de clasificación.
+La curva ROC para GBoost:
 ![Curvas ROC](images/ROC_XGboost.png "La curva ROC para GBoost")
+La curva ROC para LightGBM:
 ![Curvas ROC](images/ROC_lightgmb.png "La curva ROC para LightGBM")
-![Curvas ROC](images/ROC_svm.png "SVM")
+La curva ROC para SVM:
+![Curvas ROC](images/ROC_svm.png "La curva ROC para SVM")
+La curva ROC para Random Forest:
 ![Curvas ROC](images/ROC_random_forest.png "La curva ROC para Random Forest")
 
 **Análisis de las curvas ROC:**
@@ -276,7 +279,7 @@ Esta distribución de importancia nos indica que las variables relacionadas con 
 | Ranking | Modelo       | Estrategia        | F1-Score (test) | AUC-ROC (test) | Facilidad de Uso (1-5) | Eficiencia Computacional (1-5) | Tiempo de inferencia (ms) | Memoria requerida |
 |---------|--------------|-------------------|-----------------|----------------|------------------------|--------------------------------|---------------------------|-------------------|
 | 1       | XGBoost      | Ensemble Boosting | 0.69            | 0.93           | ⭐⭐⭐ (3)               | ⭐⭐⭐⭐  (4)                      | 15                        | 256 MB            |
-| 2       | LightGBM     | Ensemble Boosting | 0.67            | 0.92           | ⭐⭐⭐ (3)               | ⭐⭐⭐⭐(5)                     | 10                        | 128 MB            |
+| 2       | LightGBM     | Ensemble Boosting | 0.67            | 0.92           | ⭐⭐⭐ (3)               | ⭐⭐⭐⭐(4)                     | 10                        | 128 MB            |
 | 3       | Random Forest| Ensemble Bagging  | 0.69            | 0.93           | ⭐⭐⭐⭐ (4)              | ⭐⭐⭐ (3)                        | 20                        | 512 MB            |
 | 4       | SVM          | Kernel            | 0.67            | 0.91           | ⭐⭐⭐⭐⭐ (5)             | ⭐⭐ (2)                         | 25                        | 1024 MB           |
 
