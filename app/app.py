@@ -34,13 +34,13 @@ def main():
     # Sidebar para navegación
     with st.sidebar:
         # Logo centrado y más grande encima del título
-        image_path = os.path.join(os.path.dirname(__file__), "assets", "images", "Datashop_fondoblanco.png")
+        image_path = os.path.join(os.path.dirname(__file__), "assets", "images", "datashop_analytics.png")
         if os.path.exists(image_path):
             # Crear contenedor para centrar la imagen
             st.markdown("""
             <div style="display: flex; justify-content: center; margin-bottom: 1rem;">
             """, unsafe_allow_html=True)
-            st.image(image_path, width=200)  
+            st.image(image_path, width=300)  
             st.markdown("</div>", unsafe_allow_html=True)
         else:
             # Emoji centrado como fallback
@@ -50,12 +50,6 @@ def main():
             </div>
             """, unsafe_allow_html=True)
         
-        # Título centrado debajo del logo
-        st.markdown("""
-        <h1 style="margin: 0 0 1.5rem 0; font-size: 24px; font-weight: 500; font-family: 'Google Sans', sans-serif; text-align: center;">
-        DataShop Analytics
-        </h1>
-        """, unsafe_allow_html=True)
         
         # Usar navegación personalizada con botones personalizados
         selected_page = custom_sidebar_navigation()
