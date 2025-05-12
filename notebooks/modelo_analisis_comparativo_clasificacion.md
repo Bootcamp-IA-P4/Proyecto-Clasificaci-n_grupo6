@@ -122,12 +122,12 @@ La elección de las variables se basó en un análisis previo de importancia y c
 
 Para evaluar adecuadamente los modelos, utilizamos múltiples métricas que nos permiten comprender diferentes aspectos del rendimiento predictivo:
 
-| Modelo     | Accuracy<br>(Train) | Accuracy<br>(Test) | Precision<br>(Test) | Recall<br>(Test) | F1-Score<br>(Test) | AUC-ROC<br>(Test) | Tiempo de<br>entrenamiento (s) |
+| Modelo     | Accuracy<br>(Train) | Accuracy<br>(Test) | Precision<br>(Test) | Recall<br>(Test) | F1-Score<br>(Test) | AUC-ROC<br>(Test) | 
 |------------|---------------------|--------------------|--------------------|-----------------|-------------------|------------------|--------------------------------|
-| XGBoost    | 0.94                | 0.90              | 0.64               | 0.75            | 0.69              | 0.93             | 45                             |
-| SVM        | 0.90                | 0.88               | 0.59               | 0.75            | 0.67              | 0.91             | 120                            |
-| Random Forest | 0.92             | 0.89               | 0.62               | 0.79            | 0.69              | 0.93             | 60                             |
-| LightGBM   | 0.91                | 0.89               | 0.63               | 0.72            | 0.67              | 0.92             | 35                             |
+| XGBoost    | 0.94                | 0.90              | 0.64               | 0.75            | 0.69              | 0.93                                        |
+| SVM        | 0.90                | 0.88               | 0.59               | 0.75            | 0.67              | 0.91                                        |
+| Random Forest | 0.92             | 0.89               | 0.62               | 0.79            | 0.69              | 0.93                                        |
+| LightGBM   | 0.91                | 0.89               | 0.63               | 0.72            | 0.67              | 0.92                                        |
 
 **Explicación de métricas:**
 
