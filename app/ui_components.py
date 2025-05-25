@@ -252,13 +252,24 @@ def metric_card(title, value, description=None, delta=None, delta_color="normal"
         delta (str, optional): Valor de cambio
         delta_color (str): Color del delta (normal, good, bad)
     """
+    # Mapear valores personalizados a valores aceptados por Streamlit
+    color_mapping = {
+        "good": "normal",      # Verde para valores positivos
+        "bad": "inverse",      # Rojo para valores negativos  
+        "normal": "normal",    # Gris para valores neutros
+        "off": "off"          # Sin color
+    }
+    
+    # Usar el mapeo, con fallback a "normal" si el color no existe
+    streamlit_color = color_mapping.get(delta_color, "normal")
+    
     col1, col2 = st.columns([3, 1])
     with col1:
         st.metric(
             label=title,
             value=value,
             delta=delta,
-            delta_color=delta_color
+            delta_color=streamlit_color
         )
     if description:
         with col2:
