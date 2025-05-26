@@ -200,7 +200,7 @@ Accede a la aplicación navegando a `http://localhost:8501` en tu navegador.
    ```
 ### Ejecutar Tests 
  ```bash
-   pytest app/tests
+   pytest server/tests
    ```
 ## 🌐 Despliegue en AWS 🌐
 
